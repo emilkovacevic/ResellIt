@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -17,6 +17,8 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
+    "bcrypt": "^5.1.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
     "firebase": "^10.4.0",
@@ -29,14 +31,21 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "prisma": "^5.0.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint --fix"
     ]
   }
 }

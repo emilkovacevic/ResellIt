@@ -2,5 +2,19 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 80,
-  "semi": false
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.ts",
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": "*.tsx",
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
 }
