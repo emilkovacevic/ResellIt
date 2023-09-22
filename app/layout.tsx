@@ -26,7 +26,7 @@ export default function RootLayout({
           <ThemeProvider>
             <div className="bg-background flex flex-col min-h-screen">
               <Navbar />
-              <div className="grow">{children}</div>
+              <div className="grow px-2 my-8 max-w-4xl mx-auto self-center">{children}</div>
             </div>
           </ThemeProvider>
         </AuthProvider>

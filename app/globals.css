@@ -30,8 +30,8 @@
     --secondary: 37, 100%, 70%;
     --secondary-foreground: 50, 40%, 37%;
 
-    --accent: 10, 10%, 80%;
-    --accent-foreground: 10, 10%, 20%;
+    --accent: 220, 54%, 39%;
+    --accent-foreground: 0, 100%, 100%;
 
     --destructive: 0, 25%, 53%;
     --destructive-foreground: 7, 59%, 60%;
@@ -62,8 +62,8 @@
     --secondary: 45, 60%, 60%;
     --secondary-foreground: 36, 38%, 80%;
 
-    --accent: 20, 0%, 30%;
-    --accent-foreground: 150, 29%, 94%;
+    --accent: 220, 54%, 39%;
+    --accent-foreground: 227, 100%, 50%;
 
     --destructive: 8, 44%, 35%;
     --destructive-foreground: 8, 65%, 50%;

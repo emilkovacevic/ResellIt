@@ -31,7 +31,7 @@ interface InputProps {
           name={name}
           placeholder={placeholder}
           onBlur={onBlur}
-          className="w-full p-1 text-primary"
+          className="w-full p-4 text-primary-foreground bg-background border-primary border mb-2"
         />
         {error && <span style={{ color: 'red' }}>{error}</span>}
       </div>

@@ -9,21 +9,30 @@ const Navbar = async () => {
   const session = await getServerSession(options)
 
   return (
-    <nav className="sticky top-0 z-50 bg-primary py-4">
-      <ul className='flex gap-4'>
+    <nav className="sticky top-0 z-50 bg-primary py-4 text-foreground">
+      <ul className='flex gap-4 justify-between'>
+        <li>
+          <ul className='flex gap-4 justify-between px-2'>
+            <li className='cursor-pointer'><ToggleTheme /></li>
+            <li><Link href='/' className='font-bold text-lg'>Resell IT</Link></li>
+          </ul>
+        </li>
         {session ?
-          <SignOut />
+          <li>
+            <ul className='flex gap-4 justify-between'>
+              <li><SignOut /></li>
+              <li><Link href='/new-post' className='hover:bg-secondary bg-accent font-extrabold text-foreground py-[22px] px-4'>ADD NEW</Link></li>
+            </ul>
+          </li>
           :
-          <>
-            <li>
-              <Link href='/signin'>Sign In</Link>
-            </li>
-            <li>
-              <Link href='/register' className=' text-secondary'>Register</Link>
-            </li>
-          </>
+          <li>
+            <ul className='flex gap-4 justify-between'>
+              <li> <Link href='/signin'>Sign In</Link></li>
+              <li><Link href='/register' >Register</Link></li>
+              <li><Link href='/new-post' className='hover:bg-secondary bg-accent  font-extrabold text-foreground py-[22px] px-4'>ADD NEW</Link></li>
+            </ul>
+          </li>
         }
-        <li> <ToggleTheme /></li>
       </ul>
     </nav>
   )

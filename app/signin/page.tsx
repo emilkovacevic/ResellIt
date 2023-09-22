@@ -44,7 +44,7 @@ const SignIn = () => {
   if(session) redirect('/')
 
   return (
-      <main className='min-h-screen flex items-center justify-center text-center'>
+      <main className='flex items-center justify-center text-center'>
         <div className='bg-primary text-foreground shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:max-w-md'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h1 className='mb-4'>Sign In</h1>
