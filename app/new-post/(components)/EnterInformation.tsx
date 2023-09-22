@@ -20,7 +20,7 @@ const EnterInformation = () => {
       <Input type="number" name="price" id="price" placeholder="Add Price" value={price.toString()} onChange={(e) => setPrice(Number(e.target.value))} />
       <ReactQuill
         theme="bubble"
-        className="text-foreground"
+        className="text-foreground bg-card quill border border-primary-foreground min-h-[300px]"
         value={description}
         onChange={handleDescriptionChange} // Pass the custom change handler
         placeholder="Describe the product, select the written text to format. Use ctrl + z or command + z to undo..."

@@ -44,7 +44,7 @@ const SignIn = () => {
   if(session) redirect('/')
 
   return (
-      <main className='flex items-center justify-center text-center'>
+      <main className='flex items-center justify-center text-center my-10'>
         <div className='bg-primary text-foreground shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:max-w-md'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h1 className='mb-4'>Sign In</h1>
@@ -85,7 +85,7 @@ const SignIn = () => {
             <div>
               <button
                 type='submit'
-                className='p-2 bg-accent rounded-sm hover:bg-primary font-bold w-full'
+                className='p-2 bg-accent rounded-sm hover:bg-secondary border font-bold w-full'
               >
                 Login
               </button>
@@ -93,7 +93,7 @@ const SignIn = () => {
 
             <div className='mt-8'>
               Don&apos;t have an account?{' '}
-              <Link href='/register' className='text-secondary'>
+              <Link href='/register' className='text-secondary-foreground underline mx-2'>
                 Register
               </Link>
             </div>

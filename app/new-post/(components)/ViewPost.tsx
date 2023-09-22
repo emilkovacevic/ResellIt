@@ -3,7 +3,8 @@ import { slugify } from '@/utils/slugify';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import axiosInstance from '@/axios/instance';
-import { v4 as uuidv4 } from 'uuid';
+import shortid from 'shortid'
+import Image from 'next/image';
 
 type postType = 'STANDARD' | 'FEATURED' | 'FRONTPAGE'
 
@@ -26,7 +27,7 @@ const ViewPost = () => {
   } = useAppState();
 
   const handleSubmit = async () => {
-    const postSlug = slugify(`${uuidv4()}/${title}`)
+    const postSlug = slugify(`${shortid.generate()}-${slugify(title)}`)
     try {
       const res = await axiosInstance.post("/api/addpost", {
         body: JSON.stringify({
@@ -57,8 +58,8 @@ const ViewPost = () => {
 
   return (
     <div className="flex items-center justify-center my-10">
-      <div className="max-w-md w-full p-6 rounded-lg shadow-lg">
-      <div className="mb-4">
+      <div className="max-w-md w-full bg-card p-6 rounded-lg shadow-lg">
+        <div className="mb-4">
           <label htmlFor="postType" className="font-semibold">
             Select Post Type:
           </label>
@@ -72,15 +73,16 @@ const ViewPost = () => {
             <option value="FEATURED">Featured</option>
             <option value="FRONTPAGE">Front Page</option>
           </select>
-          <div>
-            <ul className='mb-10 mt-4'>
+          <div className='mb-6 mt-4'>
+            <legend className='text-sm mt-4'>Selection Legend</legend>
+            <ul >
               <li>Standard: Gets standard listing</li>
               <li>Featured: Is pushed on top of search page</li>
               <li>Front page: Is shown on the landing page</li>
             </ul>
           </div>
         </div>
-        <h2 className="text-2xl font-semibold mb-4 underline-offset-2 underline">Your Item</h2>
+        <h2 className="text-2xl font-semibold mb-4">Your Item</h2>
         <div className="mb-4">
           <p className="font-semibold">Selected Category:</p>
           <p>{selectedCategory}</p>
@@ -96,23 +98,20 @@ const ViewPost = () => {
         <div className="mb-4">
           <p className="font-semibold">Description:</p>
           <div
-          className='my-10'
-          dangerouslySetInnerHTML={{ __html: description }} />
+            className='my-10'
+            dangerouslySetInnerHTML={{ __html: description }} />
         </div>
         <div className="mb-4">
           <p className="font-semibold my-10">Images</p>
-          <div className="flex flex-wrap">
-            {mediaUrls?.map((url, index) => (
-              <div
-                key={index}
-                className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 mb-4"
-              >
-                <img
-                  src={url}
-                  alt={`Image ${index + 1}`}
-                  className="w-full h-auto rounded-lg shadow-lg"
-                />
-              </div>
+          <div className="flex justify-center flex-wrap">
+            {mediaUrls?.map((url) => (
+              <Image
+                key={url}
+                fill
+                src={url}
+                alt="image"
+                className="w-full h-auto max-w-[300px] max-h-[300px] rounded-lg shadow-lg mb-2"
+              />
             ))}
           </div>
         </div>

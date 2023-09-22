@@ -14,14 +14,14 @@ const SelectCategory = ({ categories }: SelectCategoryProps) => {
     } = useAppState();
 
     return (
-      <section className="py-4">
-        <h2 className="md:text-xl my-2">Select the category of your listing</h2>
-        <div className="mb-2 p-2 border border-primary-foreground rounded w-full">
+      <section className="my-10 bg-card">
+        <h2 className="md:text-xl m-4 pt-6">Select the category of your listing</h2>
+        <div className="mb-2 p-2  rounded w-full">
           {categories.map((category) => (
             <button
               key={category.value}
               className={`flex items-center w-full p-2 hover:bg-secondary ${
-                selectedCategory === category.value ? 'bg-accent text-accent-foreground' : ''
+                selectedCategory === category.value ? 'text-orange-500' : ''
               }`}
               onClick={() => setSelectedCategory(category.value)}
             >

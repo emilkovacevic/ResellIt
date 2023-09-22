@@ -7,8 +7,12 @@
     @apply scroll-smooth;
   }
 
+  a:hover{
+    color: rgb(187, 119, 31);
+  }
+
   :root {
-    --background: 10, 0%, 100%;
+    --background: 10, 0%, 90%;
     --foreground: 0, 0%, 10%;
     --foreground-hover: 0, 0%, 18%;
 
@@ -18,20 +22,20 @@
     --popover: 0, 0%, 88%;
     --popover-foreground: 0, 0%, 10%;
 
-    --card: 0, 0%, 93%;
+    --card: 0, 0%, 100%;
     --card-foreground: 0, 0%, 40%;
 
     --border: 0, 0%, 82%;
     --input: 0, 0%, 100%;
 
-    --primary: 0, 0%, 76%;
-    --primary-foreground: 50, 0%, 30%;
+    --primary: 0, 0%, 100%;
+    --primary-foreground: 0, 0%, 10%;
 
-    --secondary: 37, 100%, 70%;
-    --secondary-foreground: 50, 40%, 37%;
+    --secondary: 50, 18%, 75%;
+    --secondary-foreground: 50, 40%, 17%;
 
-    --accent: 220, 54%, 39%;
-    --accent-foreground: 0, 100%, 100%;
+    --accent: 20, 0%, 90%;
+    --accent-foreground: 40, 100%, 80%;
 
     --destructive: 0, 25%, 53%;
     --destructive-foreground: 7, 59%, 60%;
@@ -40,7 +44,7 @@
   }
 
   .dark {
-    --background: 10, 5%, 15%;
+    --background: 10, 5%, 5%;
     --foreground: 0, 0%, 92%;
     --foreground-hover: 0, 0%, 100%;
 
@@ -50,24 +54,54 @@
     --popover: 20, 0%, 20%;
     --popover-foreground: 0, 0%, 100%;
 
-    --card: 0, 0%, 26%;
+    --card: 10, 5%, 15%;
     --card-foreground: 200, 2%, 21%;
 
     --border: 200, 2%, 25%;
     --input: 0, 0%, 100%;
 
-    --primary: 0, 0%, 24%;
-    --primary-foreground: 32, 50%, 60%;
+    --primary: 220, 20%, 20%;
+    --primary-foreground: 0, 0%, 75%;
 
-    --secondary: 45, 60%, 60%;
+    --secondary: 220, 20%, 22%;
     --secondary-foreground: 36, 38%, 80%;
 
-    --accent: 220, 54%, 39%;
-    --accent-foreground: 227, 100%, 50%;
+    --accent: 200, 20%, 25%;
+    --accent-foreground: 0, 0%, 70%;
 
     --destructive: 8, 44%, 35%;
     --destructive-foreground: 8, 65%, 50%;
 
     --ring: 0, 0%, 29%;
   }
+
+  /* Swipper buttons */
+
+  .swiper-custom-button-left,
+  .swiper-custom-button-right {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .swiper-custom-button-left {
+    left: 10px;
+  }
+
+  .swiper-custom-button-right {
+    right: 10px;
+  }
+
+
+  .quill > .ql-container > .ql-editor.ql-blank::before{
+    font-size: 20px;
+    color: rgb(145, 145, 145);
+}
+
 }

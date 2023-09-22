@@ -82,7 +82,7 @@ const UploadImages = () => {
   };
 
   return (
-    <section>
+    <section className='my-10'>
       <div className="flex gap-2 justify-center my-10">
         <input
           type="file"
