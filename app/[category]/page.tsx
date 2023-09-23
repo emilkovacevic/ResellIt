@@ -13,12 +13,12 @@ const page = async () => {
   const posts = await prisma.posts.findMany({
     where: {
       published: false,
-      catSlug: slug
+      catSlug: slug,
     },
-    take: 10
+    take: 10,
   })
 
-  if (!posts.length) return notFound();
+  if (!posts.length) return notFound()
 
   return (
     <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10 mx-2">
@@ -28,12 +28,14 @@ const page = async () => {
           href={`/${slug}/${product.slug}`}
           className="block w-full h-full hover:shadow-md" // Set a fixed height for the Link element
         >
-          <div className="bg-white rounded-lg shadow-lg h-full"> {/* Make the inner div also h-full */}
+          <div className="bg-white rounded-lg shadow-lg h-full">
+            {' '}
+            {/* Make the inner div also h-full */}
             <Carousel>
               {product.img.map((img) => (
                 <div key={img} className="relative w-full h-56">
                   <Image
-                    className='rounded-t-lg'
+                    className="rounded-t-lg"
                     alt="product"
                     src={img}
                     layout="fill"
