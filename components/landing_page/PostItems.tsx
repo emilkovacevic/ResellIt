@@ -19,15 +19,15 @@ export default async function PostItems({ title }: FeaturedItemsProps) {
   })
 
   return (
-    <section id="features" className="relative bg-card">
+    <section className="relative bg-card container mx-auto">
       <div
         className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 pointer-events-none"
         aria-hidden="true"
       ></div>
-      <div className="relative container mx-auto px-4 sm:px-6 ">
+      <div className="relative p-4">
         <div className="py-12 md:py-20">
           {/* Section header */}
-          <div className="md:text-left text-center mb-8 md:mb-16 text-secondary-foreground">
+          <div className="lg:text-left text-center mb-8 md:mb-16 text-secondary-foreground">
             <h2 className="h2 mb-4 text-xl font-semibold">{title}</h2>
           </div>
           {/* Card Items */}

@@ -53,8 +53,8 @@ const Register = () => {
   if (session) redirect('/')
 
   return (
-    <main className='flex items-center justify-center text-center my-10'>
-      <div className="bg-primary text-foreground shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:max-w-md">
+    <main className="flex items-center justify-center text-center my-10">
+      <div className="bg-card text-foreground shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:max-w-md">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="mb-4">Create an Account</h1>
           <div className="mb-4">
@@ -111,7 +111,7 @@ const Register = () => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className='p-2 bg-accent rounded-sm hover:bg-secondary border font-bold w-full'
+              className="p-2 bg-accent rounded-sm hover:bg-secondary border font-bold w-full"
             >
               Submit
             </button>
@@ -119,7 +119,10 @@ const Register = () => {
 
           <div className="mt-8 text-center">
             Do you have an account?{' '}
-            <Link href="/signin" className='text-secondary-foreground underline mx-2'>
+            <Link
+              href="/signin"
+              className="text-secondary-foreground underline mx-2"
+            >
               SignIn
             </Link>
           </div>
@@ -127,7 +130,7 @@ const Register = () => {
         <div>
           <p className="my-4">or continue with</p>
           <button onClick={() => signIn('google')}>
-            <FcGoogle className="mt-4 mx-auto" size={25}/>
+            <FcGoogle className="mt-4 mx-auto" size={25} />
           </button>
         </div>
       </div>
@@ -136,4 +139,3 @@ const Register = () => {
 }
 
 export default Register
-

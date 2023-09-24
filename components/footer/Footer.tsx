@@ -5,7 +5,7 @@ import { BsFacebook, BsGithub, BsTwitter } from 'react-icons/bs'
 
 const Footer = () => {
   return (
-    <footer className="bg-card px-4 md:px-0">
+    <footer className="bg-card px-4 mt-10 md:px-0">
       {/* Top area: Blocks */}
       <div className="mx-auto px-4 text-foreground grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-border container">
         {/* 1st block */}
