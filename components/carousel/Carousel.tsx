@@ -1,5 +1,4 @@
 'use client'
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -34,14 +33,15 @@ export default function Swipper({ children, title = '' }: SwipperProps) {
         }}
         keyboard
         pagination={{
-          type: 'fraction'
+          type: 'fraction',
+          el: '.custom-pagination-style' 
         }}
         loop
         autoplay={{
-          delay: 4500
+          delay: 4500,
+          disableOnInteraction: false,
         }}
         modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper"
       >
         <LeftArrow />
         <RightArrow />

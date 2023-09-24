@@ -58,14 +58,14 @@ const ViewPost = () => {
 
   return (
     <div className="flex items-center justify-center my-10">
-      <div className="max-w-md w-full bg-card p-6 rounded-lg shadow-lg">
+      <div className="max-w-3xl mx-auto w-full bg-card p-6 rounded-lg shadow-lg">
         <div className="mb-4">
           <label htmlFor="postType" className="font-semibold">
             Select Post Type:
           </label>
           <select
             id="postType"
-            className="block w-full mt-1 p-2 border rounded-md"
+            className="block w-full mt-1 p-2 text-accent border rounded-md"
             value={selectedPostType}
             onChange={(e) => setSelectedPostType(e.target.value as postType)}
           >
@@ -103,24 +103,27 @@ const ViewPost = () => {
         </div>
         <div className="mb-4">
           <p className="font-semibold my-10">Images</p>
-          <div className="flex justify-center flex-wrap">
+          <div className="flex justify-start gap-4 flex-wrap">
             {mediaUrls?.map((url) => (
               <Image
                 key={url}
-                fill
+                width={180}
+                height={180}
                 src={url}
                 alt="image"
-                className="w-full h-auto max-w-[300px] max-h-[300px] rounded-lg shadow-lg mb-2"
+                className="w-40 h-40 rounded-lg shadow-lg mb-2"
               />
             ))}
           </div>
         </div>
-        <button
-          onClick={handleSubmit}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
-        >
-          Post
-        </button>
+        <div className=''>
+          <button
+            onClick={handleSubmit}
+            className="bg-blue-500 w-full p-6 text-2xl text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+          >
+            Post
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <main className="flex items-center my-10 justify-center">
       <div className="flex flex-col items-center max-w-sm mx-auto text-center">
-        <p className="p-3 text-sm font-medium rounded-full text-primary bg-background">
+        <p className="p-3 text-sm font-medium rounded-full text-secondary-foreground bg-card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -24,7 +24,7 @@ const NotFound = () => {
             />
           </svg>
         </p>
-        <h1 className="mt-3 text-2xl font-semibold text-primary md:text-3xl">
+        <h1 className="mt-3 text-2xl font-semibold text-foreground md:text-3xl">
           404 | Page not found
         </h1>
         <p className="mt-4 text-foreground">

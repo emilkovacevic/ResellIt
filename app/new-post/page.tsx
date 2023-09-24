@@ -52,7 +52,7 @@ const NewPostpage = () => {
 
       {currentStep === 4 && <ViewPost/>}
 
-      <section className='flex justify-evenly'>
+      <section className='flex justify-evenly my-4'>
         {currentStep > 1 && <button
           type='button'
           onClick={goBack}

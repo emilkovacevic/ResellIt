@@ -2,7 +2,11 @@ import Link from 'next/link'
 import prisma from '@/lib/prisma'
 import Image from 'next/image'
 
-export default async function FeaturedItems() {
+interface FeaturedItemsProps {
+    title: string
+}
+
+export default async function PostItems({title}:FeaturedItemsProps) {
 
     const frontpageItems = await prisma.posts.findMany({
         where: {
@@ -25,7 +29,7 @@ export default async function FeaturedItems() {
                 <div className="py-12 md:py-20">
                     {/* Section header */}
                     <div className="text-left mb-8 md:mb-16 text-secondary-foreground">
-                        <h2 className="h2 mb-4 text-xl font-semibold">Featured Items</h2>
+                        <h2 className="h2 mb-4 text-xl font-semibold">{title}</h2>
                     </div>
                     {/* Card Items */}
                     <div className="max-w-sm mx-auto grid text-primary-foreground gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
@@ -46,7 +50,7 @@ export default async function FeaturedItems() {
                                     />
                                 </div>
                                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-opacity-70 bg-black text-white text-center">
-                                    <div className="font-semibold text-lg">{item.title}</div>
+                                    <div className="font-semibold text-lg">{item.title.slice(0,20)}</div>
                                     <div className="text-accent-foreground font-bold">${item.price}</div>
                                 </div>
                             </Link>

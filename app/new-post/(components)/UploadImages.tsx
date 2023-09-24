@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from "next/image"
 import {
   getStorage,
@@ -19,7 +19,7 @@ const UploadImages = () => {
     setMediaUrls, } = useAppState()
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
 
-  const uploadFiles = async () => {
+  const uploadFiles = useCallback(async () => {
     const storage = getStorage(app);
     const urls: string[] = [];
 
@@ -55,13 +55,12 @@ const UploadImages = () => {
         setFiles([])
       }
     }
-  };
-
+  }, [files, setFiles, setMediaUrls]);
   useEffect(() => {
     if (files?.length > 0) {
       uploadFiles();
     }
-  }, [files]);
+  }, [files, uploadFiles]);
 
   const deleteImage = async (index: number) => {
     try {
@@ -107,7 +106,7 @@ const UploadImages = () => {
         </label>
       </div>
       {uploadProgress !== null && (
-        <div className="mb-2">
+        <div className="mb-2 mx-auto w-fit">
           Uploading: {uploadProgress.toFixed(2)}%
           <progress value={uploadProgress} max="100"></progress>
         </div>
@@ -125,25 +124,27 @@ interface ImageGalleryProps {
 const ImageGallery: React.FC<ImageGalleryProps> = ({ mediaUrls, onDelete }: ImageGalleryProps) => {
   return (
     <div className="flex flex-wrap gap-4 justify-center">
-      {mediaUrls?.length ? (
-        mediaUrls?.map((url, index) => (
-          <div key={index} className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
-            <Image
-              width={800}
-              height={800}
-              src={url}
-              alt={`Image ${index + 1}`}
-              className="w-full rounded-lg shadow-lg object-cover "
-            />
-            <button onClick={() => onDelete(index)}>Delete</button>
+      <div className='flex flex-wrap gap-4 justify-start bg-card p-4 rounded-sm shadow'>
+        {mediaUrls?.length ? (
+          mediaUrls?.map((url, index) => (
+            <div key={index} className="">
+              <Image
+                width={800}
+                height={800}
+                src={url}
+                alt={`Image ${index + 1}`}
+                className="w-40 h-40 rounded-lg shadow-lg object-fill "
+              />
+              <button onClick={() => onDelete(index)}>Delete</button>
+            </div>
+          ))
+        ) : (
+          <div className="text-center my-20">
+            <h2 className="text-lg font-semibold my-4">Upload at least one image</h2>
+            <p>Odds of a successful sale are greater when people see what they are buying.</p>
           </div>
-        ))
-      ) : (
-        <div className="text-center my-20">
-          <h2 className="text-lg font-semibold my-4">Upload at least one image</h2>
-          <p>Odds of a successful sale are greater when people see what they are buying.</p>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

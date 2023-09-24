@@ -21,7 +21,7 @@ const page = async () => {
   if (!posts.length) return notFound()
 
   return (
-    <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10 mx-2">
+    <main className="grid container mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10 ">
       {posts.map((product) => (
         <Link
           key={product.id}
