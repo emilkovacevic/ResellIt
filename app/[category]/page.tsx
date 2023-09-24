@@ -1,21 +1,31 @@
-import { headers } from 'next/headers'
 import prisma from '@/lib/prisma'
 import Link from 'next/link'
 import Image from 'next/image'
 import Carousel from '@/components/carousel/Carousel'
 import { notFound } from 'next/navigation'
 
-const page = async () => {
-  const headersList = headers()
-  const activePath = headersList.get('next-url')?.split('/').pop()
-  const slug = decodeURIComponent(activePath || '')
-  console.log(slug)
+export default async function Page({
+  params,
+}: {
+  params: { category: string }
+}) {
+  const uniqueCatSlugs = await prisma.posts.findMany({
+    select: {
+      catSlug: true,
+    },
+    where: {
+      catSlug: params.category,
+    },
+    distinct: ['catSlug'],
+  })
+
   const posts = await prisma.posts.findMany({
     where: {
-      published: false,
-      catSlug: slug,
+      catSlug: {
+        in: uniqueCatSlugs.map((item) => item.catSlug),
+      },
     },
-    take: 10,
+    take: 30,
   })
 
   if (!posts.length) return notFound()
@@ -25,28 +35,30 @@ const page = async () => {
       {posts.map((product) => (
         <Link
           key={product.id}
-          href={`/${slug}/${product.slug}`}
-          className="block w-full h-full hover:shadow-md" // Set a fixed height for the Link element
+          href={`/${params.category}/${product.slug}`}
+          className="block w-full h-full hover:shadow-md  rounded-md "
         >
-          <div className="bg-white rounded-lg shadow-lg h-full">
-            {' '}
-            {/* Make the inner div also h-full */}
+          <div className="bg-white rounded-md shadow-lg h-full">
             <Carousel>
               {product.img.map((img) => (
                 <div key={img} className="relative w-full h-56">
                   <Image
-                    className="rounded-t-lg"
+                    className="w-full h-full object-cover rounded-t-md"
                     alt="product"
                     src={img}
-                    layout="fill"
-                    objectFit="cover"
+                    width={180}
+                    height={180}
                   />
                 </div>
               ))}
             </Carousel>
-            <div className="p-4 flex justify-between items-center">
-              <h3 className="text-xl font-semibold my-4">{product.title}</h3>
-              <p className="text-gray-600">${product.price}</p>
+            <div className="p-4 flex justify-between items-center gap-4">
+              <h3 className="text-xl text-primary font-semibold my-4">
+                {product.title}
+              </h3>
+              <p className="text-secondary font-extrabold text-xl">
+                ${product.price}
+              </p>
             </div>
           </div>
         </Link>
@@ -54,5 +66,3 @@ const page = async () => {
     </main>
   )
 }
-
-export default page

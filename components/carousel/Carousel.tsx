@@ -21,20 +21,20 @@ export default function Swipper({ children, title = '' }: SwipperProps) {
   return (
     <div>
       {title ? (
-        <h2 className="p-8 my-2 text-4xl font-bold text-center border-b border-border">
-          {title}
-        </h2>
+        <>
+          <div className=" mt-4 border-b border-border" />
+          <h2 className=" py-4 text-xl font-bold text-left">{title}</h2>
+        </>
       ) : null}
 
       <Swiper
         navigation={{
           nextEl: '.swiper-custom-button-right',
-          prevEl: '.swiper-custom-button-left'
+          prevEl: '.swiper-custom-button-left',
         }}
         keyboard
         pagination={{
           type: 'fraction',
-          el: '.custom-pagination-style' 
         }}
         loop
         autoplay={{

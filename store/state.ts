@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 // Define a type for your state
 interface AppState {
@@ -21,7 +21,7 @@ type AppActions = {
   setPrice: (price: number) => void
   setDescription: (description: string) => void
   setMediaUrls: (urls: string[]) => void
-};
+}
 
 const useAppState = create<AppState & AppActions>()(
   persist(
@@ -33,20 +33,21 @@ const useAppState = create<AppState & AppActions>()(
       price: 0,
       description: '',
       mediaUrls: [],
-     
+
       setCurrentStep: (step: number) => set({ currentStep: step }),
       setSelectedCategory: (category) => set({ selectedCategory: category }),
       setFiles: (files: File[]) => set({ files: files }),
       setTitle: (title: string) => set({ title: title }),
       setPrice: (price: number) => set({ price: price }),
-      setDescription: (description: string) => set({ description: description }),
-      setMediaUrls: (urls: string[]) => set({mediaUrls: [...urls] }),
+      setDescription: (description: string) =>
+        set({ description: description }),
+      setMediaUrls: (urls: string[]) => set({ mediaUrls: [...urls] }),
     }),
     {
       name: 'global',
-      getStorage: () => localStorage,
-    }
-  )
-);
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+)
 
 export default useAppState

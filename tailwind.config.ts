@@ -16,10 +16,10 @@ const config: Config = {
         background: 'hsl(var(--background))',
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground:'hsl(var(--card-foreground))',
+          foreground: 'hsl(var(--card-foreground))',
         },
         foreground: 'hsl(var(--foreground))',
-        foreground_hover: 'hls(var(--foreground-hover))',
+        foreground_hover: 'hsl(var(--foreground-hover))',
 
         primary: {
           DEFAULT: 'hsl(var(--primary))',

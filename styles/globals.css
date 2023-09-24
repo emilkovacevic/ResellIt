@@ -28,13 +28,13 @@
     --border: 0, 0%, 82%;
     --input: 0, 0%, 100%;
 
-    --primary: 0, 0%, 100%;
-    --primary-foreground: 0, 0%, 10%;
+    --primary: 230, 50%, 40%;
+    --primary-foreground: 0, 0%, 94%;
 
     --secondary: 50, 18%, 75%;
     --secondary-foreground: 50, 40%, 17%;
 
-    --accent: 20, 0%, 90%;
+    --accent: 50, 50%, 70%;
     --accent-foreground: 40, 100%, 80%;
 
     --destructive: 0, 25%, 53%;
@@ -93,16 +93,11 @@
     left: 10px;
   }
 
-  .custom-pagination-style {
-    color: rgb(42, 0, 209) !important;
-    z-index: 999;
-  }
-
   .swiper-custom-button-right {
     right: 10px;
   }
 
-  .quill>.ql-container>.ql-editor.ql-blank::before {
+  .quill > .ql-container > .ql-editor.ql-blank::before {
     font-size: 20px;
     color: rgb(145, 145, 145);
   }

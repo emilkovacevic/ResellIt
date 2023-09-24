@@ -1,15 +1,18 @@
-import useAppState from '@/store/state';
-import { slugify } from '@/utils/slugify';
-import React, { useState } from 'react';
+'use client'
+
+import useAppState from '@/store/state'
+import { slugify } from '@/utils/slugify'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import axiosInstance from '@/axios/instance';
+import axiosInstance from '@/axios/instance'
 import shortid from 'shortid'
-import Image from 'next/image';
+import Image from 'next/image'
+import DOMPurify from 'dompurify'
 
 type postType = 'STANDARD' | 'FEATURED' | 'FRONTPAGE'
 
 const ViewPost = () => {
-  const [selectedPostType, setSelectedPostType] = useState<postType>('STANDARD');
+  const [selectedPostType, setSelectedPostType] = useState<postType>('STANDARD')
   const router = useRouter()
   const {
     selectedCategory,
@@ -23,13 +26,15 @@ const ViewPost = () => {
     setTitle,
     setDescription,
     setMediaUrls,
-    setCurrentStep
-  } = useAppState();
+    setCurrentStep,
+  } = useAppState()
+
+  const cleanDescription = DOMPurify.sanitize(description)
 
   const handleSubmit = async () => {
     const postSlug = slugify(`${shortid.generate()}-${slugify(title)}`)
     try {
-      const res = await axiosInstance.post("/api/addpost", {
+      const res = await axiosInstance.post('/api/addpost', {
         body: JSON.stringify({
           title,
           desc: description,
@@ -39,22 +44,22 @@ const ViewPost = () => {
           slug: postSlug,
           catSlug: selectedCategory,
         }),
-      });
+      })
 
       if (res.status === 200) {
-        router.push(`/${selectedCategory}/${postSlug}`);
-        setSelectedCategory(null);
-        setFiles([]);
-        setTitle("");
-        setPrice(0);
-        setDescription("");
+        router.push(`/${selectedCategory}/${postSlug}`)
+        setSelectedCategory(null)
+        setFiles([])
+        setTitle('')
+        setPrice(0)
+        setDescription('')
         setMediaUrls([])
         setCurrentStep(1)
       }
     } catch (error) {
-      console.log('error posting')
+      console.error('Error posting:', error)
     }
-  };
+  }
 
   return (
     <div className="flex items-center justify-center my-10">
@@ -65,7 +70,7 @@ const ViewPost = () => {
           </label>
           <select
             id="postType"
-            className="block w-full mt-1 p-2 text-accent border rounded-md"
+            className="block w-full mt-1 p-2 text-primary-foreground font-bold border rounded-md"
             value={selectedPostType}
             onChange={(e) => setSelectedPostType(e.target.value as postType)}
           >
@@ -73,9 +78,9 @@ const ViewPost = () => {
             <option value="FEATURED">Featured</option>
             <option value="FRONTPAGE">Front Page</option>
           </select>
-          <div className='mb-6 mt-4'>
-            <legend className='text-sm mt-4'>Selection Legend</legend>
-            <ul >
+          <div className="mb-6 mt-4">
+            <legend className="text-sm mt-4">Selection Legend</legend>
+            <ul>
               <li>Standard: Gets standard listing</li>
               <li>Featured: Is pushed on top of search page</li>
               <li>Front page: Is shown on the landing page</li>
@@ -98,8 +103,9 @@ const ViewPost = () => {
         <div className="mb-4">
           <p className="font-semibold">Description:</p>
           <div
-            className='my-10'
-            dangerouslySetInnerHTML={{ __html: description }} />
+            className="my-4 p-2"
+            dangerouslySetInnerHTML={{ __html: cleanDescription }}
+          ></div>
         </div>
         <div className="mb-4">
           <p className="font-semibold my-10">Images</p>
@@ -116,7 +122,7 @@ const ViewPost = () => {
             ))}
           </div>
         </div>
-        <div className=''>
+        <div>
           <button
             onClick={handleSubmit}
             className="bg-blue-500 w-full p-6 text-2xl text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
@@ -126,7 +132,7 @@ const ViewPost = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ViewPost;
+export default ViewPost
