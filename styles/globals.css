@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  html::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 12px;
+  }
+
   html {
     @apply scroll-smooth;
+    scrollbar-width: 12px;
   }
 
   a:hover {
