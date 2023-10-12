@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <ThemeProvider>
-            <div className="bg-background text-foreground flex flex-col min-h-screen">
+            <div className="bg-background text-foreground flex flex-col min-h-screen overflow-y-hidden">
               <Navbar />
               <div className="grow w-full self-center">{children}</div>
               <Footer />

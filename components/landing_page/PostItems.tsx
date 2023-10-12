@@ -4,9 +4,10 @@ import Image from 'next/image'
 
 interface FeaturedItemsProps {
   title: string
+  type: string
 }
 
-export default async function PostItems({ title }: FeaturedItemsProps) {
+export default async function PostItems({ title, type }: FeaturedItemsProps) {
   const frontpageItems = await prisma.posts.findMany({
     where: {
       published: true,
