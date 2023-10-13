@@ -1,5 +1,9 @@
 const page = () => {
-  return <div>buying-guide</div>
+  return (
+    <main className="container mx-auto">
+      <div>buying guide</div>
+    </main>
+  )
 }
 
 export default page

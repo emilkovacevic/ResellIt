@@ -18,7 +18,7 @@ export default async function PostItems({ title, type }: FeaturedItemsProps) {
       createdAt: 'desc',
     },
   })
-
+  if (!frontpageItems) return <section>No items</section>
   return (
     <section className="relative bg-card container mx-auto">
       <div

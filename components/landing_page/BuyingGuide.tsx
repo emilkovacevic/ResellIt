@@ -8,7 +8,7 @@ const BuyingGuide = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-secondary-foreground">
             Buying Guide
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl  text-foreground mt-5">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground mt-5">
             Stay informed with our buying guide and make the best decisions.
           </p>
           <Link

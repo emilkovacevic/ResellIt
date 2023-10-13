@@ -23,7 +23,7 @@ const NavigationButtons = () => {
         <button
           type="button"
           onClick={goBack}
-          className="mr-2 px-4 border-1 w-24 py-2 border-secondary-foreground  text-primary border rounded hover:bg-secondary"
+          className="mr-2 px-4 border-1 w-24 py-2 border-secondary-foreground  text-foreground border rounded hover:bg-secondary"
         >
           Back
         </button>

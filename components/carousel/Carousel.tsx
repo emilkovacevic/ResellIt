@@ -28,14 +28,12 @@ export default function Swipper({
   const handleMouseEnter = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.autoplay.stop()
-      swiperRef.current.swiper.params.loop = false
       swiperRef.current.swiper.update()
     }
   }
 
   const handleMouseLeave = () => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.params.loop = true
       swiperRef.current.swiper.update()
       swiperRef.current.swiper.autoplay.start()
     }
@@ -60,6 +58,9 @@ export default function Swipper({
         keyboard
         pagination={{
           type: 'fraction',
+          renderFraction: function (currentClass, totalClass) {
+            return `<div class="bg-background text-foreground w-max mx-auto px-2 py-1 rounded"><span class="${currentClass}">${currentClass}</span><span class=" mx-4">/</span><span class="${totalClass}">${totalClass}</span></div>`
+          },
         }}
         loop
         autoplay={{

@@ -9,8 +9,8 @@ import Footer from '@/components/footer/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Portfolio blog project',
-  description: 'Personal portfolio blog project',
+  title: 'ResellIT - Portfolio project',
+  description: 'Personal portfolio project',
   keywords:
     'next, react, developer, portfolio, design, project, professional, blog',
 }
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <ThemeProvider>
-            <div className="bg-background text-foreground flex flex-col min-h-screen overflow-y-hidden">
+            <div className="bg-background text-foreground flex flex-col min-h-screen">
               <Navbar />
               <div className="grow w-full self-center">{children}</div>
               <Footer />

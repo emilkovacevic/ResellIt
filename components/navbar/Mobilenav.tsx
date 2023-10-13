@@ -5,7 +5,12 @@ import Link from 'next/link'
 import SignOut from '@/utils/SignOut'
 import ToggleTheme from '../theme/ToggleTheme'
 import { useSession } from 'next-auth/react'
-import { AiFillHome, AiOutlineFileAdd, AiOutlineLogin } from 'react-icons/ai'
+import {
+  AiFillHome,
+  AiOutlineFileAdd,
+  AiOutlineLogin,
+  AiOutlineUser,
+} from 'react-icons/ai'
 
 const Mobilenav: React.FC = () => {
   const { data: session } = useSession()
@@ -84,7 +89,7 @@ const Mobilenav: React.FC = () => {
                   session
                     ? 'bg-primary font-extrabold text-primary-foreground'
                     : 'hover:text-accent-foreground bg-primary font-extrabold text-primary-foreground'
-                } inline-flex hover:bg-secondary-foreground/10 gap-4 items-center py-2 px-4 w-full font-extrabold text-lg`}
+                } inline-flex hover:bg-secondary-foreground gap-4 items-center py-2 px-4 w-full font-extrabold text-lg`}
               >
                 <AiOutlineFileAdd />
                 LIST NEW ITEM
@@ -98,10 +103,17 @@ const Mobilenav: React.FC = () => {
             {session ? (
               <>
                 <li className="my-4">
-                  <Link href="/account"> Account</Link>
+                  <Link
+                    className="inline-flex gap-4 items-center"
+                    href="/account"
+                  >
+                    <AiOutlineUser size={25} /> Account
+                  </Link>
                 </li>
                 <li className="my-4">
-                  <SignOut />
+                  <div>
+                    <SignOut />
+                  </div>
                 </li>
               </>
             ) : (
@@ -127,7 +139,7 @@ const Mobilenav: React.FC = () => {
               </>
             )}
             <li className="my-4">
-              <span className="inline-flex gap-4 items-center">
+              <span className="inline-flex gap-4 items-center hover:text-foreground-hover">
                 <ToggleTheme title="Theme" />
               </span>
             </li>

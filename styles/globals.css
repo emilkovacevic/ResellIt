@@ -24,7 +24,7 @@
   :root {
     --background: 10, 0%, 90%;
     --foreground: 0, 0%, 10%;
-    --foreground-hover: 0, 0%, 18%;
+    --foreground-hover: 13, 33.5%, 64.5%;
 
     --muted: 0, 0%, 82%;
     --muted-foreground: 225, 7%, 47%;

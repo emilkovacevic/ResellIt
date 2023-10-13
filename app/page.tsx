@@ -6,7 +6,7 @@ import BuyingGuide from '@/components/landing_page/BuyingGuide'
 
 export default function Home() {
   return (
-    <main>
+    <main className="space-y-6">
       <Hero />
       <CategoryList />
       <PostItems title="Featured Items" type="FRONTPAGE" />

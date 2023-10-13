@@ -1,13 +1,13 @@
-import { headers } from 'next/headers'
 import prisma from '@/lib/prisma'
 import Image from 'next/image'
 import { formatDate } from '@/lib/date-formater'
 import { notFound } from 'next/navigation'
 import Carousel from '@/components/carousel/Carousel'
-import { BsHandThumbsDownFill, BsHandThumbsUpFill } from 'react-icons/bs'
+import { AiOutlineStop, AiOutlineCheckCircle } from 'react-icons/ai'
 import Link from 'next/link'
 import DOMPurify from 'isomorphic-dompurify'
-import ActionButton from '@/components/action-button/ActionButton'
+import ActionButton from '@/components/action-buttons/ActionButton'
+import PhoneNumber from '@/components/action-buttons/phone-number'
 
 export default async function Page({
   params,
@@ -33,7 +33,7 @@ export default async function Page({
   return (
     <div className="flex container mx-auto relative flex-col-reverse tracking-wider py-10 lg:flex-row ">
       <main className="max-w-4xl mx-auto md:mt-4 p-4 bg-card w-full">
-        <section className="mb-6">
+        <div className="mb-6">
           <div className="flex justify-between flex-wrap">
             <div className="flex flex-col gap-4">
               <div>
@@ -49,7 +49,7 @@ export default async function Page({
                 Price: ${post.price}
               </div>
             </div>
-            <div title="Item posted at">{formattedDate}</div>
+            <div title="Date posted">{formattedDate}</div>
           </div>
           <div>
             <Carousel title="Product images">
@@ -70,26 +70,29 @@ export default async function Page({
             className="my-4"
             dangerouslySetInnerHTML={{ __html: cleanDescription }}
           />
-        </section>
+        </div>
       </main>
-      <aside className="w-full lg:p-4 lg:w-1/4">
+      <aside className="w-full lg:p-4 lg:w-1/4 lg:sticky top-0">
         <div className="sticky h-fit space-y-2 md:top-20 bg-card z-10">
           <div>
-            <div className="inline-flex items-center gap-4 p-2">
+            <section className="inline-flex items-center gap-4 p-2">
               <Image
                 width={895}
                 height={552}
                 loading="lazy"
-                src={post.user.image || ''}
-                alt={post.user.name || 'profile'}
+                src={post.user.image || '/images/user.jpg'}
+                alt={post.user.name || 'user'}
                 className="w-10 h-10 rounded-full"
               />
               <div>{post.user.name}</div>
-            </div>
-            <div className=" p-2">
+            </section>
+            <section className=" p-2">
               <div className="text-sm">
                 <ul className="flex flex-col justify-center gap-4">
-                  <li>Phone: {post.user.tel || 'not listed'}</li>
+                  <li className="inline-flex items-center">
+                    Phone:
+                    <PhoneNumber phone={post.user.tel || ''} />
+                  </li>
                   <li>Email: {post.user.email}</li>
                   <li>Number of items sold: {post.user.soldItems}</li>
                   <li>Member since: {formattedUserDate}</li>
@@ -97,25 +100,25 @@ export default async function Page({
                     Verified:{' '}
                     {post.user.emailVerified ? (
                       <span title="yes">
-                        <BsHandThumbsUpFill size={18} color="green" />
+                        <AiOutlineCheckCircle size={18} color="green" />
                       </span>
                     ) : (
                       <span title="no">
                         {' '}
-                        <BsHandThumbsDownFill size={18} color="orange" />
+                        <AiOutlineStop size={18} color="orange" />
                       </span>
                     )}
                   </li>
                   <li className="inline-flex gap-4">
-                    <ActionButton title="Message" user_id={post.user.id} />
-                    <ActionButton title="Store" user_id={post.user.id} />
+                    <ActionButton title="Message" route_id={post.user.id} />
+                    <ActionButton title="Store" route_id={post.user.id} />
                   </li>
                   <li>
-                    <ActionButton title="Buy" main={true} user_id={post.id} />
+                    <ActionButton title="Buy" main={true} route_id={post.id} />
                   </li>
                 </ul>
               </div>
-            </div>
+            </section>
           </div>
         </div>
       </aside>

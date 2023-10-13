@@ -2,15 +2,15 @@
 import { useRouter } from 'next/navigation'
 
 interface ActionButtonProps {
-  user_id: string
+  route_id: string
   title: string
   main?: boolean
 }
 
-const ActionButton = ({ user_id, main, title }: ActionButtonProps) => {
+const ActionButton = ({ route_id, main, title }: ActionButtonProps) => {
   const router = useRouter()
   const goToMessages = () => {
-    router.push(`/${title.toLowerCase() + '/' + user_id}`)
+    router.push(`/${title.toLowerCase() + '/' + route_id}`)
   }
   return (
     <button

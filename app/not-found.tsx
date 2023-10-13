@@ -35,7 +35,7 @@ const NotFound = () => {
         <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto">
           <button
             onClick={() => router.back()}
-            className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center border rounded-lg hover:text-primary hover:bg-background hover:border-accent-foreground text-popover-foreground bg-popover focus:ring-4 focus:ring-primary"
+            className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center border rounded-lg hover:text-foreground hover:bg-background hover:border-accent-foreground text-popover-foreground bg-popover focus:ring-4 focus:ring-primary"
           >
             <AiOutlineArrowLeft size={25} />
 
@@ -44,7 +44,7 @@ const NotFound = () => {
 
           <button
             onClick={() => router.push('/')}
-            className="inline-flex text-primary-foreground items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center border rounded-lg hover:bg-background hover:text-primary hover:border-accent-foreground bg-primary focus:ring-4 focus:ring-primary"
+            className="inline-flex text-primary-foreground items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center border rounded-lg hover:bg-background hover:text-foreground hover:border-accent-foreground bg-primary focus:ring-4 focus:ring-primary"
           >
             Take me home
           </button>

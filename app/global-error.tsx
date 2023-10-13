@@ -9,9 +9,11 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <main className="grid bg-background place-items-center min-h-screen p-6">
-          <h2>Something went wrong!</h2>
-          <button onClick={() => reset()}>Try again</button>
+        <main className="grid place-items-center">
+          <section className="bg-card p-4">
+            <h2>Something went wrong!</h2>
+            <button onClick={() => reset()}>Try again</button>
+          </section>
         </main>
       </body>
     </html>

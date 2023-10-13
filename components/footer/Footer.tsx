@@ -5,7 +5,7 @@ import { BsFacebook, BsGithub, BsTwitter } from 'react-icons/bs'
 
 const Footer = () => {
   return (
-    <footer className="bg-card px-4 mt-10 md:px-0">
+    <footer className="bg-card px-4 md:px-0">
       {/* Top area: Blocks */}
       <div className="mx-auto px-4 text-foreground grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-border container">
         {/* 1st block */}
@@ -194,7 +194,7 @@ const Footer = () => {
       <div className="md:flex container mx-auto md:items-center md:justify-between py-4 md:py-8 border-t bg-card border-gray-200 ">
         <div className="container flex justify-between">
           {/* Social as */}
-          <ul className=" flex mb-4 md:order-1 md:ml-4 md:mb-0 text-foreground">
+          <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0 text-foreground">
             <li>
               <a
                 href="#0"
@@ -213,7 +213,7 @@ const Footer = () => {
                 <BsGithub />
               </a>
             </li>
-            <li className="ml-4">
+            <li className="ml-4 md:mr-4">
               <a
                 href="#0"
                 className="flex justify-center items-center rounded-full shadow transition duration-150 ease-in-out"

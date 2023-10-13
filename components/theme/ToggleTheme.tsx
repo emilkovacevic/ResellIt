@@ -13,7 +13,9 @@ const ToggleTheme = ({ title }: ToggleThemeProps) => {
   return (
     <div
       className={`${
-        title ? 'inline-flex gap-4 items-center cursor-pointer' : 'flex'
+        title
+          ? 'inline-flex gap-4 items-center cursor-pointer hover:text-foreground_hover'
+          : 'flex'
       }`}
       onClick={toggle}
     >
