@@ -5,6 +5,7 @@ import prisma from '@/lib/prisma'
 import Image from 'next/image'
 import { AiOutlineCheckCircle, AiOutlineStop } from 'react-icons/ai'
 import ActionButton from '@/components/action-buttons/ActionButton'
+import NotFoundMsg from '@/components/not-found/NotFoundMsg'
 
 const page = async () => {
   const session = await getServerSession()
@@ -20,7 +21,7 @@ const page = async () => {
     },
   })
 
-  if (!user) return <main>Not Found</main>
+  if (!user) return <NotFoundMsg title="Account" />
 
   const formattedUserDate = formatDate(user.createdAt)
 
@@ -33,24 +34,34 @@ const page = async () => {
             {user.Post.map((post) => (
               <article
                 key={post.id}
-                className="bg-background h-28 shadow-lg flex flex-wrap justify-between gap-4"
+                className="bg-background w-full h-auto md:h-36 shadow-lg flex flex-wrap justify-between gap-4"
               >
                 <Image
                   src={post.img[0] || ''}
                   alt={post.title}
                   width={200}
                   height={200}
-                  className="object-cover h-full object-center"
+                  className="object-cover h-16 w-1/4 md:h-full object-center"
                 />
-                <div className="flex-1">
-                  <h2 className="my-1 font-bold">{post.title}</h2>
-                  <ul>
+                <section className="flex-1 w-2/4">
+                  <h2 className="my-1 font-bold text-sm md:text-base text-ellipsis">
+                    {post.title}
+                  </h2>
+                  <ul className="hidden md:block">
+                    <li>Active: {post.published.toString()}</li>
                     <li>Price: {post.price}</li>
-                    <li>Posted at {formatDate(post.createdAt)}</li>
+                    <li>Created At: {formatDate(post.createdAt)}</li>
                     <li>Total Views: {post.views}</li>
                   </ul>
-                </div>
-                <ActionButton title="Edit" route_id={post.id} />
+                </section>
+                <section className="flex flex-wrap h-fit gap-1 justify-end w-1/4">
+                  <ActionButton
+                    title="Edit"
+                    route="account"
+                    route_id={post.id}
+                  />
+                  <ActionButton title="Stats" route="account" />
+                </section>
               </article>
             ))}
           </div>
@@ -70,9 +81,13 @@ const page = async () => {
               />
               <div>{user?.name || 'No name'}</div>
             </section>
-            <section className=" p-2">
+            <section className="px-2 py-1">
               <div className="text-sm">
-                <ul className="flex flex-col justify-center gap-4">
+                <ul className="space-y-4">
+                  {/* TODO: IMPLEMENT A CREDITS TO POST NEW ITEMS FEATURE */}
+                  <li className="inline-flex w-full items-center bg-accent text-primary font-extrabold p-2">
+                    Credits: 10
+                  </li>
                   <li className="inline-flex items-center">
                     Phone: {user.tel || 'not set'}
                   </li>
@@ -92,15 +107,12 @@ const page = async () => {
                       </span>
                     )}
                   </li>
-                  <li>
-                    <ActionButton
-                      title="Edit profile"
-                      main={true}
-                      route_id={user.id}
-                    />
-                  </li>
                 </ul>
               </div>
+            </section>
+            <section className="inline-flex gap-4 p-2">
+              <ActionButton title="Messages" route="account/messages" />
+              <ActionButton title="Edit profile" route="account/edit-profile" />
             </section>
           </div>
         </div>

@@ -1,13 +1,13 @@
 {
-    "rsc": true,
-    "tsx": true,
-    "tailwind": {
-      "config": "tailwind.config.js",
-      "css": "app/globals.css",
-      "cssVariables": true
-    },
-    "aliases": {
-      "components": "@/components",
-      "utils": "@/lib/utils"
-    }
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
   }
+}

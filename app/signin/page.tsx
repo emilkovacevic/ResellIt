@@ -108,7 +108,7 @@ const SignIn = () => {
           <p className="my-4">or</p>
           <p>Continue with</p>
           <button onClick={() => signIn('google')}>
-            <FcGoogle className="mt-4 mx-auto" />
+            <FcGoogle className="mt-4 mx-auto" size={25} />
           </button>
         </div>
       </div>

@@ -69,7 +69,9 @@ export default async function Page({
         </div>
       </aside>
       <main className="max-w-4xl mx-auto md:mt-4 p-4 bg-card w-full">
-        Store page {JSON.stringify(params.userstore)}
+        {/* TODO: */}
+        <section>search filters</section>
+        <section>{params.userstore}</section>
       </main>
     </div>
   )
